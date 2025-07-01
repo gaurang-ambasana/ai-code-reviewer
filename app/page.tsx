@@ -14,7 +14,7 @@ const Home: FC = () => {
     try {
       setState("generating");
 
-      const response = await fetch(`${process.env.APP_BASE_URL}/api/reviews`, {
+      const response = await fetch(`${process.env.APP_BASE_URL}api/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
