@@ -1,5 +1,10 @@
 "use client";
-import { type FC, type MouseEventHandler, useState } from "react";
+import {
+  type ChangeEvent,
+  type FC,
+  type MouseEventHandler,
+  useState,
+} from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
@@ -59,13 +64,18 @@ const Editor: FC<CodeEditorProps> = ({ isGenerating, onGenerateReview }) => {
   const generateCodeReview: MouseEventHandler = () =>
     onGenerateReview(code, language);
 
+  const languageChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value);
+    setCode("");
+  };
+
   return (
     <div className="h-full w-6/12 flex flex-col">
       <div className="p-4 flex items-center justify-between space-x-4">
         <select
           className="p-2 border rounded"
           value={language}
-          onChange={(e) => setLanguage(e.target.value)}
+          onChange={languageChangeHandler}
           disabled={isGenerating}
         >
           {languageOptions.map(({ name, value }) => (
@@ -74,7 +84,6 @@ const Editor: FC<CodeEditorProps> = ({ isGenerating, onGenerateReview }) => {
             </option>
           ))}
         </select>
-
         <button
           disabled={isGenerating}
           onClick={generateCodeReview}
@@ -83,7 +92,6 @@ const Editor: FC<CodeEditorProps> = ({ isGenerating, onGenerateReview }) => {
           Generate Review
         </button>
       </div>
-
       <div className="flex-grow">
         <CodeMirror
           minHeight="100vh"
