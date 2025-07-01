@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Code Reviewer
+
+A web application that leverages AI to provide detailed code reviews. Built with Next.js, Tailwind CSS, and Groq's AI API, it offers an interactive code editor supporting multiple programming languages, enabling users to get insightful, markdown-formatted feedback on their code snippets.
+
+---
+
+## Features
+
+- **Interactive code editor** with syntax highlighting powered by CodeMirror.
+- **Multi-language support:** JavaScript, Python, Java, C++, Rust, Go, HTML, CSS, and more.
+- **AI-powered code review:** Powered by Groq API's LLaMA 3 model for intelligent, context-aware code analysis.
+- **Markdown formatted feedback:** Clean and readable review output with headings, bullet points, and code blocks.
+
+<!-- ---
+
+## Demo
+
+Add your deployed app URL here if available. -->
+
+---
+
+## Tech Stack
+
+- **Next.js** — React framework with API routes and server-side rendering.
+- **Tailwind CSS** — Utility-first CSS framework for rapid UI development.
+- **Codemirror** — React wrapper for the CodeMirror code editor.
+- **Groq API** — AI model API for code understanding and review.
+- **JavaScript / TypeScript** — Core languages.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 16+ and npm or yarn installed
+- Groq API key (sign up at [https://groq.com](https://groq.com))
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
 
-## Learn More
+   ```bash
+   git clone https://github.com/gaurang-ambasana/ai-code-reviewer.git
+   cd ai-code-reviewer
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   yarn install
+   # or
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Set up environment variables:
 
-## Deploy on Vercel
+   Create a `.env.local` file in the root:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Initialize Tailwind CSS (if not already):
+
+   ```bash
+   npx tailwindcss init -p
+   ```
+
+5. Run the development server:
+
+   ```bash
+   yarn dev
+   # or
+   npm run dev
+   ```
+
+Open [http://localhost:3000](http://localhost:3000) to view the app.
+
+---
+
+## Usage
+
+- Paste or write code in the editor.
+- Select the programming language from the dropdown.
+- Click **Generate Review** to get an AI-powered markdown-formatted code review.
+
+---
+
+## Acknowledgments
+
+- [Groq](https://groq.com) for the AI API.
+- [Tailwind CSS](https://tailwindcss.com) for beautiful UI utilities.
+- [CodeMirror](https://codemirror.net) for the powerful editor.
+
+---
