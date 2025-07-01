@@ -15,6 +15,8 @@ export async function OPTIONS() {
   );
 }
 
+const systemPrompt = `You are a senior vice president of engineering, CTO and code review expert. Please review the code for bugs, style issues, and improvements. Format your response using Markdown, including code blocks, bullet points, and headings where appropriate. if applicable always Evaluate Time and Space Complexity, and provide suggestions for optimization. Be concise but thorough.`;
+
 export async function POST(req: NextRequest) {
   const { code } = await req.json();
 
@@ -36,8 +38,7 @@ export async function POST(req: NextRequest) {
           messages: [
             {
               role: "system",
-              content:
-                "You are a senior engineering manager. Please review the code for bugs, style issues, and improvements. Format your response using Markdown, including code blocks, bullet points, and headings where appropriate.",
+              content: systemPrompt,
             },
             {
               role: "user",
