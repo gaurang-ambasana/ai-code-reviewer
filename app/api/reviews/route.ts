@@ -1,7 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const allowedOrigin =
+  process.env.NODE_ENV === "production"
+    ? "https://ai-code-reviewer-seven-snowy.vercel.app"
+    : "http://localhost:3000";
+
+export async function OPTIONS() {
+  return NextResponse.json(
+    {},
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": allowedOrigin,
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    }
+  );
+}
+
 export async function POST(req: NextRequest) {
   const { code } = await req.json();
+
   if (!code) {
     return NextResponse.json({ error: "No code provided" }, { status: 400 });
   }
@@ -34,21 +54,38 @@ export async function POST(req: NextRequest) {
 
     if (!response.ok) {
       const error = await response.json();
-
       return NextResponse.json(
         { error: error.error || "API request failed" },
-        { status: response.status }
+        {
+          status: response.status,
+          headers: {
+            "Access-Control-Allow-Origin": allowedOrigin,
+          },
+        }
       );
     }
 
     const data = await response.json();
     const review = data.choices[0].message.content;
 
-    return NextResponse.json({ review });
+    return NextResponse.json(
+      { review },
+      {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": allowedOrigin,
+        },
+      }
+    );
   } catch (err) {
     return NextResponse.json(
       { error: "Internal server error", details: (err as Error).message },
-      { status: 500 }
+      {
+        status: 500,
+        headers: {
+          "Access-Control-Allow-Origin": allowedOrigin,
+        },
+      }
     );
   }
 }
