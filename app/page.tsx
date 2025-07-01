@@ -14,7 +14,12 @@ const Home: FC = () => {
     try {
       setState("generating");
 
-      const response = await fetch("http://localhost:3000/api/reviews", {
+      const apiUrl =
+        process.env.NODE_ENV === "production"
+          ? "https://ai-code-reviewer-seven-snowy.vercel.app"
+          : "http://localhost:3000";
+
+      const response = await fetch(`${apiUrl}/api/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
