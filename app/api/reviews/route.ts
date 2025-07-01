@@ -1,17 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const allowedOrigin =
-  process.env.NODE_ENV === "production"
-    ? "https://ai-code-reviewer-seven-snowy.vercel.app"
-    : "http://localhost:3000";
-
 export async function OPTIONS() {
   return NextResponse.json(
     {},
     {
       status: 200,
       headers: {
-        "Access-Control-Allow-Origin": allowedOrigin,
+        "Access-Control-Allow-Origin": process.env.APP_BASE_URL || "*",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
@@ -59,7 +54,7 @@ export async function POST(req: NextRequest) {
         {
           status: response.status,
           headers: {
-            "Access-Control-Allow-Origin": allowedOrigin,
+            "Access-Control-Allow-Origin": process.env.APP_BASE_URL || "*",
           },
         }
       );
@@ -73,7 +68,7 @@ export async function POST(req: NextRequest) {
       {
         status: 200,
         headers: {
-          "Access-Control-Allow-Origin": allowedOrigin,
+          "Access-Control-Allow-Origin": process.env.APP_BASE_URL || "*",
         },
       }
     );
@@ -83,7 +78,7 @@ export async function POST(req: NextRequest) {
       {
         status: 500,
         headers: {
-          "Access-Control-Allow-Origin": allowedOrigin,
+          "Access-Control-Allow-Origin": process.env.APP_BASE_URL || "*",
         },
       }
     );
