@@ -2,6 +2,8 @@
 
 A web application that leverages AI to provide detailed code reviews. Built with Next.js, Tailwind CSS, and Groq's AI API, it offers an interactive code editor supporting multiple programming languages, enabling users to get insightful, markdown-formatted feedback on their code snippets.
 
+https://ai-code-reviewer-seven-snowy.vercel.app/
+
 ---
 
 ## Features
@@ -10,12 +12,6 @@ A web application that leverages AI to provide detailed code reviews. Built with
 - **Multi-language support:** JavaScript, Python, Java, C++, Rust, Go, HTML, CSS, and more.
 - **AI-powered code review:** Powered by Groq API's LLaMA 3 model for intelligent, context-aware code analysis.
 - **Markdown formatted feedback:** Clean and readable review output with headings, bullet points, and code blocks.
-
-<!-- ---
-
-## Demo
-
-Add your deployed app URL here if available. -->
 
 ---
 
