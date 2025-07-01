@@ -6,7 +6,8 @@ export async function OPTIONS() {
     {
       status: 200,
       headers: {
-        "Access-Control-Allow-Origin": process.env.APP_BASE_URL || "*",
+        "Access-Control-Allow-Origin":
+          process.env.NEXT_PUBLIC_APP_BASE_URL || "*",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
@@ -54,7 +55,8 @@ export async function POST(req: NextRequest) {
         {
           status: response.status,
           headers: {
-            "Access-Control-Allow-Origin": process.env.APP_BASE_URL || "*",
+            "Access-Control-Allow-Origin":
+              process.env.NEXT_PUBLIC_APP_BASE_URL || "*",
           },
         }
       );
@@ -68,7 +70,8 @@ export async function POST(req: NextRequest) {
       {
         status: 200,
         headers: {
-          "Access-Control-Allow-Origin": process.env.APP_BASE_URL || "*",
+          "Access-Control-Allow-Origin":
+            process.env.NEXT_PUBLIC_APP_BASE_URL || "*",
         },
       }
     );
@@ -78,7 +81,8 @@ export async function POST(req: NextRequest) {
       {
         status: 500,
         headers: {
-          "Access-Control-Allow-Origin": process.env.APP_BASE_URL || "*",
+          "Access-Control-Allow-Origin":
+            process.env.NEXT_PUBLIC_APP_BASE_URL || "*",
         },
       }
     );

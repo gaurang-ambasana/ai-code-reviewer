@@ -14,13 +14,18 @@ const Home: FC = () => {
     try {
       setState("generating");
 
-      const response = await fetch(`${process.env.APP_BASE_URL}api/reviews`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ code }),
-      });
+      console.log(`${process.env.NEXT_PUBLIC_APP_BASE_URL}api/reviews`);
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_APP_BASE_URL}api/reviews`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ code }),
+        }
+      );
 
       const data = await response.json();
 
